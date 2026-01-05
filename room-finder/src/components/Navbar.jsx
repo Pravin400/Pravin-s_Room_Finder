@@ -32,7 +32,7 @@ export default function Navbar() {
     className="flex items-center gap-2 font-bold text-lg whitespace-nowrap"
   >
     <img src={logo} alt="Logo" className="h-10 w-10" />
-    <span className="hidden sm:block">RoomFinder</span>
+    <span className="">RoomFinder</span>
   </NavLink>
 
   {/* NAV LINKS */}
