@@ -33,48 +33,70 @@ export default function Navbar() {
       </NavLink>
 
       {/* NAV LINKS */}
-      <div className="flex items-center gap-6">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            `transition-colors duration-200 ${
-              isActive
-                ? 'border-b-2 border-white font-semibold'
-                : 'hover:text-blue-200'
-            }`
-          }
-        >
-          Home
-        </NavLink>
+<div className="flex items-center gap-6">
+  {/* HOME is always visible */}
+  <NavLink
+    to="/"
+    className={({ isActive }) =>
+      `transition-colors duration-200 ${
+        isActive
+          ? 'border-b-2 border-white font-semibold'
+          : 'hover:text-blue-200'
+      }`
+    }
+  >
+    Home
+  </NavLink>
 
-        <NavLink
-          to="/add-room"
-          className={({ isActive }) =>
-            `transition-colors duration-200 ${
-              isActive
-                ? 'border-b-2 border-white font-semibold'
-                : 'hover:text-blue-200'
-            }`
-          }
-        >
-          Add Room
-        </NavLink>
+  {/* IF USER LOGGED IN */}
+  {user ? (
+    <>
+      <NavLink
+        to="/add-room"
+        className={({ isActive }) =>
+          `transition-colors duration-200 ${
+            isActive
+              ? 'border-b-2 border-white font-semibold'
+              : 'hover:text-blue-200'
+          }`
+        }
+      >
+        Add Room
+      </NavLink>
 
-        <NavLink
-          to="/my-rooms"
-          className={({ isActive }) =>
-            `transition-colors duration-200 ${
-              isActive
-                ? 'border-b-2 border-white font-semibold'
-                : 'hover:text-blue-200'
-            }`
-          }
-        >
-          My Rooms
-        </NavLink>
+      <NavLink
+        to="/my-rooms"
+        className={({ isActive }) =>
+          `transition-colors duration-200 ${
+            isActive
+              ? 'border-b-2 border-white font-semibold'
+              : 'hover:text-blue-200'
+          }`
+        }
+      >
+        My Rooms
+      </NavLink>
 
-        {user && <ProfileMenu user={user} />}
-      </div>
+      {/* 👤 PROFILE */}
+      <ProfileMenu user={user} />
+    </>
+  ) : (
+    /* IF USER NOT LOGGED IN */
+    <NavLink
+      to="/login"
+      className={({ isActive }) =>
+        `transition-colors duration-200 ${
+          isActive
+            ? 'border-b-2 border-white font-semibold'
+            : 'hover:text-blue-200'
+        }`
+      }
+    >
+      Login
+    </NavLink>
+  )}
+</div>
+
     </nav>
   );
 }
