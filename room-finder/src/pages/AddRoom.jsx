@@ -8,8 +8,9 @@ import ImageDropzone from '../components/ImageDropZone';
 export default function AddRoom() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [images, setImages] = useState([]);
 const [previews, setPreviews] = useState([]);
-const [images, setImages] = useState([]);
+
 
   const [form, setForm] = useState({
     title: '',
@@ -41,52 +42,49 @@ const [images, setImages] = useState([]);
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-const { data, error } = await supabase.storage.listBuckets();
-console.log(data, error);
 
-  try {
-    // 1. Upload images
-   const uploadImages = async () => {
-  const urls = [];
-
-  for (let file of images) {
-    const path = `${user.id}/${Date.now()}-${file.name}`;
-    await supabase.storage.from('room-images').upload(path, file);
-
-    const { data } = supabase.storage
-      .from('room-images')
-      .getPublicUrl(path);
-
-    urls.push(data.publicUrl);
+  if (images.length === 0) {
+    alert('Please upload at least one image.');
+    return;
   }
 
-  return urls;
-};
+  try {
+    const uploadedUrls = [];
 
+    for (let file of images) {
+      const path = `${user.id}/${Date.now()}-${file.name}`;
 
+      const { error } = await supabase.storage
+        .from('room-images')
+        .upload(path, file);
 
-    // 2. Insert room data into DB
-    const { error } = await supabase.from('rooms').insert([
-      {
-        title: form.title,
-        location: form.location,
-        rent: form.rent,
-        property_type: form.property_type,
-        tenant_preference: form.tenant_preference,
-        contact_number: form.contact_number,
-        images: imageUrls,
-        owner_id: user.id,
-      },
-    ]);
+      if (error) throw error;
 
-    if (error) throw error;
+      const { data } = supabase.storage
+        .from('room-images')
+        .getPublicUrl(path);
 
-    alert('Room added successfully!');
+      uploadedUrls.push(data.publicUrl);
+    }
+
+    await supabase.from('rooms').insert({
+      title: form.title,
+      location: form.location,
+      rent: form.rent,
+      property_type: form.property_type,
+      tenant_preference: form.tenant_preference,
+      contact_number: form.contact_number,
+      images: uploadedUrls,
+      owner_id: user.id,
+    });
+
+    alert('Room added successfully');
     navigate('/my-rooms');
   } catch (err) {
     alert(err.message);
   }
 };
+
 
 
   if (!user) return null;
@@ -120,12 +118,13 @@ console.log(data, error);
       </select>
 
       <input name="contact_number" placeholder="Contact Number" className="w-full border p-2 mb-3" onChange={handleChange} />
-      <ImageDropzone
+<ImageDropzone
   images={images}
   setImages={setImages}
   previews={previews}
   setPreviews={setPreviews}
 />
+
 
 
       <button className="w-full bg-blue-600 text-white p-2 rounded">

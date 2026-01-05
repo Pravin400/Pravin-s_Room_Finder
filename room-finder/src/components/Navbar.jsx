@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useEffect, useState } from 'react';
+import logo from '../assets/navbar.png';
 
 export default function Navbar() {
   const [user, setUser] = useState(null);
@@ -29,7 +30,8 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between items-center p-4 bg-blue-600 text-white">
-      <Link to="/" className="font-bold text-lg">
+      <Link to="/" className="flex items-center gap-2 font-bold text-lg">
+        <img src={logo} alt="Logo" className="h-10 w-10" />
         RoomFinder
       </Link>
 
