@@ -25,78 +25,31 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-blue-600 text-white">
-      {/* LOGO */}
-      <NavLink to="/" className="flex items-center gap-2 font-bold text-lg">
-        <img src={logo} alt="Logo" className="h-10 w-10" />
-        RoomFinder
-      </NavLink>
-
-      {/* NAV LINKS */}
-<div className="flex items-center gap-6">
-  {/* HOME is always visible */}
+    <nav className="flex flex-wrap justify-between items-center px-6 py-4 bg-blue-600 text-white">
+  {/* LOGO */}
   <NavLink
     to="/"
-    className={({ isActive }) =>
-      `transition-colors duration-200 ${
-        isActive
-          ? 'border-b-2 border-white font-semibold'
-          : 'hover:text-blue-200'
-      }`
-    }
+    className="flex items-center gap-2 font-bold text-lg whitespace-nowrap"
   >
-    Home
+    <img src={logo} alt="Logo" className="h-10 w-10" />
+    <span className="hidden sm:block">RoomFinder</span>
   </NavLink>
 
-  {/* IF USER LOGGED IN */}
-  {user ? (
-    <>
-      <NavLink
-        to="/add-room"
-        className={({ isActive }) =>
-          `transition-colors duration-200 ${
-            isActive
-              ? 'border-b-2 border-white font-semibold'
-              : 'hover:text-blue-200'
-          }`
-        }
-      >
-        Add Room
-      </NavLink>
+  {/* NAV LINKS */}
+  <div className="flex items-center gap-6 flex-wrap justify-end">
+    <NavLink to="/">Home</NavLink>
 
-      <NavLink
-        to="/my-rooms"
-        className={({ isActive }) =>
-          `transition-colors duration-200 ${
-            isActive
-              ? 'border-b-2 border-white font-semibold'
-              : 'hover:text-blue-200'
-          }`
-        }
-      >
-        My Rooms
-      </NavLink>
+    {user ? (
+      <>
+        <NavLink to="/add-room">Add Room</NavLink>
+        <NavLink to="/my-rooms">My Rooms</NavLink>
+        <ProfileMenu user={user} />
+      </>
+    ) : (
+      <NavLink to="/login">Login</NavLink>
+    )}
+  </div>
+</nav>
 
-      {/* 👤 PROFILE */}
-      <ProfileMenu user={user} />
-    </>
-  ) : (
-    /* IF USER NOT LOGGED IN */
-    <NavLink
-      to="/login"
-      className={({ isActive }) =>
-        `transition-colors duration-200 ${
-          isActive
-            ? 'border-b-2 border-white font-semibold'
-            : 'hover:text-blue-200'
-        }`
-      }
-    >
-      Login
-    </NavLink>
-  )}
-</div>
-
-    </nav>
   );
 }
