@@ -8,7 +8,6 @@ A modern, full-stack web application designed to bridge the gap between room see
 
 **Room Finder** is a responsive web application that allows users to browse rental listings with advanced filtering and enables owners to list their properties effortlessly. Built with a focus on speed and security, it leverages **Supabase** for backend services including authentication, database management, and cloud storage.
 
-> This project was developed as a technical assessment focusing on CRUD operations, secure authentication, and optimized UI/UX.
 
 ---
 
@@ -76,35 +75,36 @@ A modern, full-stack web application designed to bridge the gap between room see
 
 ## ▶️ How to Run Locally
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/Pravin400/Pravin-s_Room_Finder](https://github.com/Pravin400/Pravin-s_Room_Finder)
-    cd room-finder
-    ```
+1. **Clone the repository:**
+```bash
+git clone https://github.com/Pravin400/Pravin-s_Room_Finder
+cd room-finder
+```
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+2. **Install dependencies:**
+```bash
+npm install
+```
 
-3.  **Environment Setup:**
-    Create a `.env` file in the root directory and add your Supabase credentials:
-    ```env
-    VITE_SUPABASE_URL=your_supabase_url
-    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-    ```
+3. **Environment Setup:**
+Create a `.env` file in the root directory and add your Supabase credentials:
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-4.  **Launch the app:**
-    ```bash
-    npm run dev
-    ```
-    View the app at `http://localhost:5173`.
+4. **Launch the app:**
+```bash
+npm run dev
+```
+View the app at `http://localhost:5173`.
 
 ---
 
 ## 🌐 Live Demo
 
-Check out the live application here: [**Pravin's Room Finder**](https://pravin-s-room-finder.vercel.app/)
+Check out the live application here: **Pravin's Room Finder**  
+https://pravin-s-room-finder.vercel.app/
 
 ---
 
@@ -116,5 +116,6 @@ Check out the live application here: [**Pravin's Room Finder**](https://pravin-s
 ---
 
 ## 📌 Implementation Notes
+
 * **Security:** Supabase Row Level Security (RLS) is enabled to ensure owners can only modify their own listings.
 * **Serverless:** The project follows a serverless architecture; no custom backend server is required.
