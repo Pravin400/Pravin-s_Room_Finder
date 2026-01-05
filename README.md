@@ -1,174 +1,120 @@
-🏠 Room Finder Website
-📌 Project Overview
+# 🏠 Room Finder Website
 
-Room Finder is a web application that helps users search for rental rooms and allows room owners to add, update, and manage room listings.
-The application uses Supabase for authentication, database management, and image storage, with a clean and responsive user interface built using React.
+A modern, full-stack web application designed to bridge the gap between room seekers and owners. This platform offers a seamless experience for searching rental properties and managing listings with real-time updates.
 
-This project is developed as part of a technical assessment.
+---
 
-🎯 Objective
+## 📌 Project Overview
 
-Enable users to find rental rooms using filters
+**Room Finder** is a responsive web application that allows users to browse rental listings with advanced filtering and enables owners to list their properties effortlessly. Built with a focus on speed and security, it leverages **Supabase** for backend services including authentication, database management, and cloud storage.
 
-Allow room owners to add and manage room listings
+> This project was developed as a technical assessment focusing on CRUD operations, secure authentication, and optimized UI/UX.
 
-Implement secure authentication and image storage using Supabase
+---
 
-👥 User Roles
-🔍 Room Finder (User)
+## 🎯 Key Objectives
 
-View all available rooms
+* **For Seekers:** Find the perfect living space using high-priority location filters and preferences.
+* **For Owners:** A streamlined dashboard to add, edit, and delete room listings.
+* **For Security:** Implement robust OTP-based authentication and secure data handling via Supabase RLS.
 
-Search rooms using filters:
+---
 
-Location (highest priority)
+## 👥 User Roles
 
-Price range
+### 🔍 Room Finder (User)
+* **Browse:** View a comprehensive list of available rooms.
+* **Advanced Search:** Filter results by:
+    * **Location** (Highest priority search).
+    * **Price Range** (Find rooms within budget).
+    * **Property Type** (1 BHK, 2 BHK, 1/2/3 Bed).
+    * **Tenant Preference** (Bachelor, Family, Girls, Working).
+* **Details:** Access deep-dive information for every listing.
 
-Property type (1 BHK, 2 BHK, 1/2/3 Bed)
+### 🏘 Room Owner
+* **Listing Management:** Create new listings with detailed descriptions.
+* **Media Support:** Upload and manage multiple room images via drag-and-drop.
+* **Full Control:** Edit or remove existing listings through a personal dashboard.
 
-Tenant preference (Bachelor, Family, Girls, Working)
+---
 
-View detailed room information
+## 🧩 Features
 
-🏘 Room Owner
+### 🔐 Authentication
+* **OTP Login:** Secure, passwordless email login using Supabase Auth.
+* **Session Management:** Persistent login states and secure logout.
+* **Profile Tracking:** Dedicated profile section showing active user credentials.
 
-Add new room listings
+### 🏠 Room Management
+* **Detailed Forms:** Fields for Location, Rent, Property Type, Tenant Preference, and Contact info.
+* **Image Handling:** Integrated drag-and-drop uploader with instant previews.
+* **Owner Views:** Filtered view specifically for the owner's managed properties.
 
-Upload multiple room images
+### 🔍 Search & Filters
+* Real-time filtering logic.
+* Priority-based location matching.
 
-Edit or delete room listings
+### 🎨 UI / UX Excellence
+* **Responsive Design:** Fully optimized for Mobile, Tablet, and Desktop.
+* **Interactive Cards:** Automatic image slideshows for listings that pause on hover.
+* **Clean Interface:** Minimalist and professional aesthetic built with Tailwind CSS.
 
-View all rooms added by them
+---
 
-🧩 Features
-🔐 Authentication
+## 🛠 Tech Stack
 
-Email-based login using OTP (One-Time Password)
+| Component | Technology |
+| :--- | :--- |
+| **Frontend** | React (Vite) |
+| **Styling** | Tailwind CSS |
+| **Routing** | React Router DOM |
+| **Database** | Supabase (PostgreSQL) |
+| **Auth** | Supabase Auth (Email OTP) |
+| **Storage** | Supabase Storage (Buckets) |
 
-Secure session handling with Supabase
+---
 
-Profile section displaying logged-in user email
+## ▶️ How to Run Locally
 
-Logout functionality
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Pravin400/Pravin-s_Room_Finder](https://github.com/Pravin400/Pravin-s_Room_Finder)
+    cd room-finder
+    ```
 
-🏠 Room Management
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-Add room with details:
+3.  **Environment Setup:**
+    Create a `.env` file in the root directory and add your Supabase credentials:
+    ```env
+    VITE_SUPABASE_URL=your_supabase_url
+    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+    ```
 
-Location
+4.  **Launch the app:**
+    ```bash
+    npm run dev
+    ```
+    View the app at `http://localhost:5173`.
 
-Rent price
+---
 
-Property type
+## 🌐 Live Demo
 
-Tenant preference
+Check out the live application here: [**Pravin's Room Finder**](https://pravin-s-room-finder.vercel.app/)
 
-Contact number
+---
 
-Upload multiple images (device upload with drag & drop)
+## 🧪 Test Credentials
 
-Edit and delete existing rooms
+* **Login Method:** Email OTP.
+* **Instructions:** Enter any valid email address to receive a 6-digit verification code. No registration is required.
 
-Owner-specific room listing view
+---
 
-🔍 Search & Filters
-
-Location-based search (highest priority)
-
-Filter by:
-
-Price range
-
-Property type
-
-Tenant preference
-
-🖼 Image Handling
-
-Upload images from device
-
-Drag & drop support
-
-Image preview before submission
-
-Automatic image slideshow on room cards
-
-Slideshow pauses on hover
-
-🎨 UI / UX
-
-Responsive design (Mobile & Desktop)
-
-Clean and professional UI
-
-Role-based navigation (logged-in vs logged-out users)
-
-🛠 Tech Stack
-Frontend
-
-React (Vite)
-
-Tailwind CSS
-
-React Router DOM
-
-Backend / Services
-
-Supabase Authentication (Email / OTP)
-
-Supabase Database (PostgreSQL)
-
-Supabase Storage (Room Images)
-
-No custom backend server is used. Supabase handles authentication, database, and storage.
-
-▶️ How to Run Locally
-
-Clone the repository:
-
-git clone https://github.com/Pravin400/Pravin-s_Room_Finder
-
-
-Navigate to the project directory:
-
-cd room-finder
-
-
-Install dependencies:
-
-npm install
-
-
-Create a .env file and add:
-
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-
-
-Start the development server:
-
-npm run dev
-
-
-Open in browser:
-
-http://localhost:5173
-
-🌐 Live Demo
-
-https://pravin-s-room-finder.vercel.app/
-
-🧪 Test Credentials
-
-Login is OTP-based
-
-Use any valid email address to receive OTP
-
-📌 Notes
-
-Image uploads are limited to device files for reliability and security.
-
-Supabase Row Level Security (RLS) is enabled to protect user data.
-
-Backend services are handled entirely by Supabase as per assignment guidelines.
+## 📌 Implementation Notes
+* **Security:** Supabase Row Level Security (RLS) is enabled to ensure owners can only modify their own listings.
+* **Serverless:** The project follows a serverless architecture; no custom backend server is required.
